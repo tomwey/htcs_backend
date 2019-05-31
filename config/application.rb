@@ -54,12 +54,12 @@ module CentralServices
     config.middleware.insert 0, Rack::UTF8Sanitizer
     
     # 解析xml参数到hash，需要旧的gem支持: actionpack-xml_parser
-    config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::XmlParamsParser
+    # config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::XmlParamsParser
     
     # remove warnings
     config.active_record.raise_in_transactional_callbacks = true
     
-    config.cache_store = [:mem_cache_store, '127.0.0.1', { namespace: 'fcz-backend-1', compress: true }]
+    config.cache_store = [:mem_cache_store, '127.0.0.1', { namespace: 'htcs-backend-1', compress: true }]
     
     # 防止大量IP访问
     config.middleware.use Rack::Attack
