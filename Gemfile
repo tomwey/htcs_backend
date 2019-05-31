@@ -54,8 +54,8 @@ gem 'actionpack-xml_parser'
 # gem 'pg_search'
 
 # 生成二维码
-# gem 'rqrcode_png'
-# gem 'rqrcode'
+gem 'rqrcode_png'
+gem 'rqrcode'
 
 # redis
 gem 'redis'
