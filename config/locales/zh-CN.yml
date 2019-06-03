@@ -62,6 +62,7 @@
       loan_apply: '大额贷款申请'
       promo_poster: '营销注册页面'
       channel: '推广渠道'
+      shop: '门店'
     attributes:
       user:
         uid: '用户ID'
@@ -96,6 +97,17 @@
         specialty: '专业'
         created_at: '创建时间'
         updated_at: '更新时间'
+      shop:
+        uniq_id: '门店编号'
+        name: '名字'
+        address: '详细地址'
+        lat: '纬度'
+        lng: '经度'
+        opened: '是否打开'
+        sort: '显示顺序'
+        created_at: '创建时间'
+        updated_at: '更新时间'
+        id: '#'
       permission_resource:
         id: 'ID'
         func_name: '资源中文名'

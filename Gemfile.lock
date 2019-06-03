@@ -158,6 +158,10 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geokit (1.13.1)
+    geokit-rails (2.3.1)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     grape (1.0.1)
@@ -399,6 +403,7 @@ DEPENDENCIES
   coffee-rails
   dalli
   devise
+  geokit-rails
   grape
   grape-entity
   grape-swagger

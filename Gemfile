@@ -142,6 +142,7 @@ gem 'rest-client'
 # SQLServer
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
+gem 'geokit-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

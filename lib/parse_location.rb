@@ -5,7 +5,7 @@ class ParseLocation
     result = RestClient.get 'http://apis.map.qq.com/ws/geocoder/v1/', 
       {:params => {:address => address, :key => SiteConfig.qq_lbs_api_key}}
     json = JSON.parse(result)
-    puts result
+    # puts result
     if json['result'].blank?
       return nil
     end
@@ -18,7 +18,8 @@ class ParseLocation
     lng = loc['lng']
     lat = loc['lat']
     
-    return "POINT(#{lng} #{lat})"
+    # return "POINT(#{lng} #{lat})"
+    return lat,lng
     
   end
   
