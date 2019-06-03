@@ -19,7 +19,7 @@ class SendAliSms
       TemplateCode: SiteConfig.ali_sms_template_code,
       TemplateParam: "{\"code\":\"#{text}\"}"
     }
-    puts text
+    # puts text
     
     sign = sign_params(params)
     # puts sign
