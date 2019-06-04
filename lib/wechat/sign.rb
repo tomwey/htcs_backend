@@ -17,7 +17,7 @@ module Wechat
           timestamp: timestamp,
           nonceStr: random_str,
           signature: signature,
-          jsApiList: ['chooseWXPay']
+          jsApiList: SiteConfig.wx_jsapi_list ? SiteConfig.wx_jsapi_list.split(',') : ['chooseWXPay']
       }
     end
     

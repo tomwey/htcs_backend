@@ -11,6 +11,17 @@ module API
         get :configs do
           { code: 0, message: 'ok', data: {  } }
         end # end configs
+        
+        desc "获取微信JSSDK配置数据"
+        params do
+          requires :url, type: String, desc: '需要签名的url'
+        end
+        get :wx_config do
+          url = (params[:url].start_with?('http://') or params[:url].start_with?('https://')) ? params[:url] : SiteConfig.send(params[:url])
+          json = Wechat::Sign.sign_package(url)
+          { code: 0, message: 'ok', data: json }
+        end # end get
+        
       end # end resource 
       
       resource :shops, desc: "门店相关接口" do
