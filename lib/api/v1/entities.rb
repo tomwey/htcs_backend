@@ -830,6 +830,14 @@ module API
         expose :created_at, format_with: :chinese_datetime
       end
       
+      class Shop < Base
+        expose :uniq_id, as: :id
+        expose :name, :address, :lat, :lng, :distance
+        expose :dist_km do |model,opts|
+          '%.2f' % (model.distance.to_f / 1000.0)
+        end
+      end
+      
       class Author < Base
         expose :nickname do |model, opts|
           model.nickname || model.mobile

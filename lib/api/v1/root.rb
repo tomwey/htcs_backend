@@ -31,7 +31,7 @@ module API
         end
       end
       
-      mount API::V1::FczAPI
+      mount API::V1::HtcsAPI
       mount API::V1::AuthCodesAPI
       mount API::V1::UsersAPI
       # mount API::V1::SalariesAPI

@@ -1,3 +1,4 @@
+require 'rest-client'
 module API
   module CommHelpers
     # 获取服务器session
@@ -8,6 +9,21 @@ module API
     # 获取客户端ip
     def client_ip
       env['action_dispatch.remote_ip'].to_s
+    end
+    
+    # 根据客户端ip获取客户的位置
+    def client_loc_from_ip
+      res = RestClient.get "https://apis.map.qq.com/ws/location/v1/ip?ip=#{client_ip}&key=EJZBZ-VCM34-QJ4UU-XUWNV-3G2HJ-DWBNJ"
+      json = JSON.parse(res)
+      if json['status'] == 0
+        if json['result'] && json['result']['location']
+          return json['result']['location']['lng'],json['result']['location']['lat']
+        else
+          return nil
+        end
+      else
+        return nil
+      end
     end
   
     # 最大分页大小
