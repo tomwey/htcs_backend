@@ -76,6 +76,7 @@ module API
             @card = VipCardInfo.where(mobile: mobile).first
             if @card.blank?
               @card = VipCardInfo.new
+              @card.mobile = mobile
               @card.vip_name = params[:name]
               @card.idcard = params[:idcard]
               @card.save!
