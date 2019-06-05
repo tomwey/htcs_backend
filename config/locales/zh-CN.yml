@@ -63,6 +63,7 @@
       promo_poster: '营销注册页面'
       channel: '推广渠道'
       shop: '门店'
+      vip_card_info: '会员卡信息'
     attributes:
       user:
         uid: '用户ID'
@@ -108,6 +109,16 @@
         created_at: '创建时间'
         updated_at: '更新时间'
         id: '#'
+      vip_card_info:
+        id: '#'
+        vip_name: '会员卡姓名'
+        mobile: '手机'
+        idcard: '身份证号'
+        card_id: '会员卡号'
+        openid: '绑定微信ID'
+        actived_at: '激活时间'
+        verified: '卡是否有效'
+        memo: '备注'
       permission_resource:
         id: 'ID'
         func_name: '资源中文名'
