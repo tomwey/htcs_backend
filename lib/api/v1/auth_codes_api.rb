@@ -54,17 +54,7 @@ module API
           return render_error(2003, "验证码生成错误，请重试") if code.blank?
           
           # 发送短信
-          # msg = SendAliSms.send(mobile, code.code)
-          # if msg.blank?
-          #   # 发送成功，更新发送日志
-          #   log.update_attribute(:send_total, log.send_total + 1)
-          #   { code: 0, message: "ok" }
-          # else
-          #   session.delete(key)
-          #   { code: -1, message: msg }
-          # end
-          
-          msg = SendYpSms.send(mobile, code.code)#SendAliSms.send(mobile, code.code)
+          msg = SendAliSms.send(mobile, code.code)
           if msg.blank?
             # 发送成功，更新发送日志
             log.update_attribute(:send_total, log.send_total + 1)
@@ -73,6 +63,16 @@ module API
             session.delete(key)
             { code: -1, message: msg }
           end
+          
+          # msg = SendYpSms.send(mobile, code.code)#SendAliSms.send(mobile, code.code)
+          # if msg.blank?
+          #   # 发送成功，更新发送日志
+          #   log.update_attribute(:send_total, log.send_total + 1)
+          #   { code: 0, message: "ok" }
+          # else
+          #   session.delete(key)
+          #   { code: -1, message: msg }
+          # end
           
           # tpl = "您的验证码是{code}【{company}】"
           # text = tpl.gsub('{code}', "#{code.code}")
