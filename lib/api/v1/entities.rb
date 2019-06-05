@@ -821,6 +821,11 @@ module API
         expose :created_at, as: :time, format_with: :chinese_datetime
       end
       
+      class VipCardInfo < Base
+        expose :card_id, :vip_name, :mobile, :idcard
+        expose :actived_at, as: :active_time, format_with: :chinese_datetime
+      end
+      
       # 消息
       class Message < Base
         expose :title do |model, opts|

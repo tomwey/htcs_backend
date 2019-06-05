@@ -55,6 +55,55 @@ module API
         end # end get nearby
       end # end resource
       
+      resource :vip, desc: "VIP相关接口" do
+        desc "VIP绑定"
+        params do
+          requires :mobile, type: String, desc: '手机号'
+          requires :code, type: String, desc: '验证码'
+          optional :name, type: String, desc: "名字"
+          optional :idcard, type: String, desc: "身份证"
+        end
+        post :bind do
+          mobile = params[:mobile]
+          code = params[:code]
+          
+          return render_error(-1, '手机号不正确') unless check_mobile(mobile)
+          
+          @code = AuthCode.where(mobile: mobile, code: code, activated_at: nil).first
+          if @code.blank?
+            return render_error(5005, '验证码不正确或已激活')
+          else
+            @card = VipCardInfo.where(mobile: mobile).first
+            if @card.blank?
+              @card = VipCardInfo.new
+              @card.vip_name = params[:name]
+              @card.idcard = params[:idcard]
+              @card.save!
+            end
+      
+            @code.activated_at = Time.zone.now
+            @code.save!
+            
+            # has_bind_profile = @user.profile.present?
+            
+            return { code: 0, message: 'ok', data: {
+              card_id: @card.card_id
+            } }
+          end
+          
+        end # end post bind
+        
+        desc "获取会员卡信息"
+        params do
+          requires :id, type: String, desc: '会员卡号'
+        end
+        get '/:id' do
+          @card = VipCardInfo.find_by(card_id: params[:id])
+          return render_error(4004, '会员卡不存在') if @card.blank?
+          render_json(@card, API::V1::Entities::VipCardInfo)
+        end # end get
+      end # end resource 
+      
     end
   end
 end
