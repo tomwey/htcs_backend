@@ -249,7 +249,8 @@ GEM
       rack (>= 0.4)
     rack-attack (5.0.1)
       rack
-    rack-cors (1.0.1)
+    rack-cors (1.0.6)
+      rack (>= 1.6.0)
     rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
